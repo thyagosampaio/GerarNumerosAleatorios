@@ -20,19 +20,57 @@ int main()
 	random_device rd;
 	mt19937 mt(rd());
 	uniform_int_distribution<int> dist(1, 25);
-	int v0;
+	int v0 = NULL;
 
 	for (static int i = 0; i< sizeof(valores) / sizeof(int); i++)
 	{
-		v0 = dist(mt);
+		/*v0 = dist(mt);
 		if (!verifica(valores, i, v0))
 			valores[i] = v0;
-		cout << valores[i] << "\n";
+		cout << valores[i] << "\n";*/
+		if (i == 0)
+		{
+			v0 = dist(mt);
+			valores[i] = v0;
+			
+		}
+		if (i > 0)
+		{
+			int tam = i;
+			v0 = dist(mt);
+			/*if (v0 != valores[i] - 1)
+			{
+				valores[i] = v0;
+				cout << valores[i] << "\n";
+			}*/
+			while (tam>0)
+			{
+				if (v0 != valores[tam])
+				{
+					valores[i] = v0;
+					tam--;
+					
+				}
+				else
+				{
+					v0 = dist(mt);
+				}
+				
+			}
+		}
+		
+
+
+
 		
 		
 
 	}
-	
+	for (int j = 0; j < sizeof(valores) / sizeof(int); j++)
+	{
+		cout << valores[j] << "\n";
+	}
+	int teste = 1;
 	
 	cout << endl;
 }
