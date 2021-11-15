@@ -3,7 +3,7 @@
 using namespace std;
 //#define n = 10
 
-bool verifica(int valor1[], int tam, int valor2)
+/*bool verifica(int valor1[], int tam, int valor2)
 {
 	for (int i = 0; i < tam; i++)
 	{
@@ -11,15 +11,20 @@ bool verifica(int valor1[], int tam, int valor2)
 			return true;
 	}
 	return false;
+}*/
+
+int gerador()
+{
+  random_device rd;
+	mt19937 mt(rd());
+	uniform_int_distribution<int> dist(1, 25);
+  return dist(mt);
 }
 
 int main()
 {
 	//int numerotemp = 0;
 	int valores[15] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-	random_device rd;
-	mt19937 mt(rd());
-	uniform_int_distribution<int> dist(1, 25);
 	int v0 = NULL;
 
 	for (static int i = 0; i< sizeof(valores) / sizeof(int); i++)
@@ -30,14 +35,14 @@ int main()
 		cout << valores[i] << "\n";*/
 		if (i == 0)
 		{
-			v0 = dist(mt);
+			v0 = gerador();
 			valores[i] = v0;
 			
 		}
 		if (i > 0)
 		{
 			int tam = i;
-			v0 = dist(mt);
+			v0 = gerador();
 			/*if (v0 != valores[i] - 1)
 			{
 				valores[i] = v0;
@@ -53,18 +58,11 @@ int main()
 				}
 				else
 				{
-					v0 = dist(mt);
+					v0 = gerador();
 				}
 				
 			}
 		}
-		
-
-
-
-		
-		
-
 	}
 	for (int j = 0; j < sizeof(valores) / sizeof(int); j++)
 	{
@@ -72,5 +70,6 @@ int main()
 	}
 	int teste = 1;
 	
+  
 	cout << endl;
 }
