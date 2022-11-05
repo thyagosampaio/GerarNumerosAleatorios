@@ -1,75 +1,93 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <random>
-using namespace std;
-//#define n = 10
 
-/*bool verifica(int valor1[], int tam, int valor2)
-{
-	for (int i = 0; i < tam; i++)
-	{
-		if (valor1[i] == valor2)
-			return true;
-	}
-	return false;
-}*/
+using namespace std;
+
+int arr[15];
+int sorts = 0;
 
 int gerador()
 {
-  random_device rd;
-	mt19937 mt(rd());
-	uniform_int_distribution<int> dist(1, 25);
-  return dist(mt);
+    random_device rd;
+    mt19937 mt(rd());
+    uniform_int_distribution<int> dist(1, 25);
+    return dist(mt);
+}
+
+void setupArray()
+{
+    srand(time(0));
+    cout << "Numeros gerados: " << endl;
+    for (int i = 0; i < 15; i++)
+    {
+        arr[i] = gerador();
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+void bubbleSort(int arr[], int n)
+{
+    cout << " Funcao BubbleSort Ativada. " << "\n";
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+
+        // Last i elements are already
+        // in place
+        for (j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
+}
+void printArray(int arr[], int size)
+{
+    cout << " Funcao PrintArray ativada. " << "\n";
+    int i;
+    for (i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+void testArray(int arr[], int size)
+{
+    cout << "Funcao TestArray ativada." << "\n";
+    int igual = 0;
+    int need = 0;
+    for (int i = 0; i < size - 1; i++)
+    {
+        if (arr[i] == arr[i + 1])
+        {
+            arr[i] = gerador();
+            igual++;
+        }
+        else if (igual > 0)
+        {
+            igual = 0;
+            need++;
+            break;
+        }
+    }
+
+    bubbleSort(arr, size);
+    sorts++;
+    printArray(arr, size);
+    if (need > 0)
+    {
+        testArray(arr, size);
+    }
+
+
 }
 
 int main()
 {
-	//int numerotemp = 0;
-	int valores[15] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-	int v0 = NULL;
+    setupArray();
+    int N = sizeof(arr) / sizeof(arr[0]);
+    bubbleSort(arr, N);
+    sorts++;
+    cout << "Numeros gerados apos o " << "primeiro " << "bubble sort: \n";
+    printArray(arr, N);
+    testArray(arr, N);
+    cout << "\nFoi necessario " << sorts << " sorts" << endl;
 
-	for (static int i = 0; i< sizeof(valores) / sizeof(int); i++)
-	{
-		/*v0 = dist(mt);
-		if (!verifica(valores, i, v0))
-			valores[i] = v0;
-		cout << valores[i] << "\n";*/
-		if (i == 0)
-		{
-			v0 = gerador();
-			valores[i] = v0;
-			
-		}
-		if (i > 0)
-		{
-			int tam = i;
-			v0 = gerador();
-			/*if (v0 != valores[i] - 1)
-			{
-				valores[i] = v0;
-				cout << valores[i] << "\n";
-			}*/
-			while (tam>0)
-			{
-				if (v0 != valores[tam])
-				{
-					valores[i] = v0;
-					tam--;
-					
-				}
-				else
-				{
-					v0 = gerador();
-				}
-				
-			}
-		}
-	}
-	for (int j = 0; j < sizeof(valores) / sizeof(int); j++)
-	{
-		cout << valores[j] << "\n";
-	}
-	int teste = 1;
-	
-  
-	cout << endl;
+    return 0;
 }
