@@ -19,7 +19,7 @@ int gerador()
 void setupArray()
 {
     srand(time(0));
-    cout << "Numeros gerados: " << endl;
+    cout << "Números gerados: " << endl;
     for (int i = 0; i < 15; i++)
     {
         arr[i] = gerador();
@@ -29,7 +29,7 @@ void setupArray()
 }
 void bubbleSort(int arr[], int n)
 {
-    cout << " Funcao BubbleSort Ativada. " << "\n";
+    cout << " Função BubbleSort Ativada. " << "\n";
     int i, j;
     for (i = 0; i < n - 1; i++)
 
@@ -41,7 +41,7 @@ void bubbleSort(int arr[], int n)
 }
 void printArray(int arr[], int size)
 {
-    cout << " Funcao PrintArray ativada. " << "\n";
+    cout << " Função PrintArray ativada. " << "\n";
     int i;
     for (i = 0; i < size; i++)
         cout << arr[i] << " ";
@@ -49,7 +49,8 @@ void printArray(int arr[], int size)
 }
 void testArray(int arr[], int size)
 {
-    cout << "Funcao TestArray ativada." << "\n";
+    
+    cout << "Função TestArray ativada." << "\n";
     int igual = 0;
     int need = 0;
     for (int i = 0; i < size - 1; i++)
@@ -80,14 +81,15 @@ void testArray(int arr[], int size)
 
 int main()
 {
+    setlocale(LC_ALL,"");
     setupArray();
     int N = sizeof(arr) / sizeof(arr[0]);
     bubbleSort(arr, N);
     sorts++;
-    cout << "Numeros gerados apos o " << "primeiro " << "bubble sort: \n";
+    cout << "Números gerados apos o " << "primeiro " << "bubble sort: \n";
     printArray(arr, N);
     testArray(arr, N);
-    cout << "\nFoi necessario " << sorts << " sorts" << endl;
+    cout << "\nFoi necessário " << sorts << " sorts" << endl;
 
     return 0;
 }
