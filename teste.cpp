@@ -7,7 +7,7 @@ using namespace std;
 int arr[15];
 int sorts = 0;
 
-int setupArray()
+void setupArray()
 {
     srand(time(0));
     cout << "Números gerados: " << endl;
