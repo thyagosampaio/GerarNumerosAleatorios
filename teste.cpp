@@ -11,7 +11,7 @@ void setupArray()
 {
     srand(time(0));
     cout << "Números gerados: " << endl;
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 15; i++)
     {
         arr[i] = rand() % 26;
         cout << arr[i] << " ";
